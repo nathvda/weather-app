@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:ital,wght@1,900&display=swap');
+
+
+:root{
+    --main : rgba(135, 135, 224, 0.562);
+}
+*{
+    margin:0;
+    padding:0;
+    list-style-type:none;
+    box-sizing:border-box;
+}
+
+body{
+background-image:linear-gradient(90deg, var(--main), #efefef);
+font-family:inter;
+
+header{
+    height:50vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-evenly;
+    align-items: center;
+
+    .ville{
+        font-size:2rem;
+        font-style:italic;
+        font-weight:bolder;
+        color:white;
+        text-shadow: var(--main) 0.2rem 0.2rem 0;
+    }
+
+    .pays{
+        background-color:var(--main);
+        color:white;
+        padding:0.5em;
+        border-radius:0.2rem;
+        letter-spacing:0.2em;
+    }
+
+    .townToCheck{
+        border:0;
+        padding:0.5em 1em;
+        font-size:2rem;
+        border-radius:0.3rem;
+        caret-color:var(--main);
+    }
+
+    .forecast__Button{
+        background-color: var(--main);
+        border:0;
+        padding:1rem;
+        border-radius:0.3rem;
+        color:white;
+        text-transform:uppercase;
+    }
+}
+
+main{
+    display:grid;
+    gap:0.5rem;
+    grid-template-rows: repeat(40,1fr);
+    padding:1rem;
+
+    article{
+        background-image:linear-gradient(180deg, var(--main), transparent);
+        border:1px solid #c4c4c44d;
+        border-radius:0.3rem;
+        padding:1rem;
+        display:grid;
+        gap:1rem;
+        grid-template-areas: "date date date hour" "temp maxi mini feels" "hum hum press press" "windS windS windO windO" "cloudy cloudy cloudy cloudy";
+
+        .fullDate{
+            color:white;
+            text-align:left;
+            grid-area: date;
+            background-color:var(--main);
+            color:white;
+            padding:0.5em;
+            border-radius:0.2rem;
+            letter-spacing:0.2em;
+        }
+
+        .time{
+            grid-area:hour;
+            text-align:right;
+            background-color:var(--main);
+            color:white;
+            padding:0.5em;
+            border-radius:0.2rem;
+            letter-spacing:0.2em;
+        }
+
+        .temp,.min,.max,.feels{
+            text-align:center;
+            display:flex;
+            flex-direction: column;
+            padding:0.5rem 0;
+        }
+
+        .temp{
+            grid-area:temp;
+        }
+
+        .min{
+            grid-area:mini;
+        }
+
+        .max{
+            grid-area:maxi;
+        }
+
+        .feels{
+            grid-area:feels;
+        }
+
+        .min::before,
+        .max::before,
+        .temp::before,
+        .feels::before,
+        .humidity::before,
+        .pressure::before,
+        .wind::before,
+        .clouds::before{
+            background-color:rgb(0, 0, 0, 0.1);
+            border:1px solid rgba(0,0,0,0.05);
+            border-radius:0.2rem;
+            font-weight:bold;
+            padding:0.3rem;
+            margin-bottom:0.5rem;
+            color:white;
+        }
+
+        .min::before{
+            content:"min";
+        }
+
+        .max::before{
+            content:"max";
+        }
+
+        .temp::before{
+            content:"temperature";
+        }
+
+        .feels::before{
+            content:"feels like";
+        }
+
+        .humidity, 
+        .pressure, 
+        .wind,
+        .clouds{
+            text-align:right;
+        }
+    
+
+        .humidity{
+            grid-area: hum;
+        }
+
+        .humidity::before{
+            content: "humidity";
+        }
+
+        .pressure::before{
+            content: "pressure";
+        }
+
+        .pressure{
+            grid-area:press;
+        }
+
+        .wind{
+            grid-area: windS;
+        }
+
+        .wind::before{
+            content: "wind speed";
+        }
+
+        .winddir{
+            grid-area:windO;
+        }
+
+        .clouds{
+            grid-area:cloudy;
+        }
+
+        .clouds::before{
+            content: "nebulosity";
+        }
+
+        .humidity::before,
+        .pressure::before,
+        .wind::before,
+        .clouds::before{
+            margin-right:1rem;
+            float:left;
+        }
+
+    }
+}
+}
+

@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:ital,wght@1,900&display=swap");
+:root {
+  --main: rgba(135, 135, 224, 0.562);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: linear-gradient(90deg, var(--main), #efefef);
+  font-family: inter;
+}
+body header {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+body header .ville {
+  font-size: 2rem;
+  font-style: italic;
+  font-weight: bolder;
+  color: white;
+  text-shadow: var(--main) 0.2rem 0.2rem 0;
+}
+body header .pays {
+  background-color: var(--main);
+  color: white;
+  padding: 0.5em;
+  border-radius: 0.2rem;
+  letter-spacing: 0.2em;
+}
+body header .townToCheck {
+  border: 0;
+  padding: 0.5em 1em;
+  font-size: 2rem;
+  border-radius: 0.3rem;
+  caret-color: var(--main);
+}
+body header .forecast__Button {
+  background-color: var(--main);
+  border: 0;
+  padding: 1rem;
+  border-radius: 0.3rem;
+  color: white;
+  text-transform: uppercase;
+}
+body main {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-rows: repeat(40, 1fr);
+  padding: 1rem;
+}
+body main article {
+  background-image: linear-gradient(180deg, var(--main), transparent);
+  border: 1px solid rgba(196, 196, 196, 0.3019607843);
+  border-radius: 0.3rem;
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-areas: "date date date hour" "temp maxi mini feels" "hum hum press press" "windS windS windO windO" "cloudy cloudy cloudy cloudy";
+}
+body main article .fullDate {
+  color: white;
+  text-align: left;
+  grid-area: date;
+  background-color: var(--main);
+  color: white;
+  padding: 0.5em;
+  border-radius: 0.2rem;
+  letter-spacing: 0.2em;
+}
+body main article .time {
+  grid-area: hour;
+  text-align: right;
+  background-color: var(--main);
+  color: white;
+  padding: 0.5em;
+  border-radius: 0.2rem;
+  letter-spacing: 0.2em;
+}
+body main article .temp, body main article .min, body main article .max, body main article .feels {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0;
+}
+body main article .temp {
+  grid-area: temp;
+}
+body main article .min {
+  grid-area: mini;
+}
+body main article .max {
+  grid-area: maxi;
+}
+body main article .feels {
+  grid-area: feels;
+}
+body main article .min::before,
+body main article .max::before,
+body main article .temp::before,
+body main article .feels::before,
+body main article .humidity::before,
+body main article .pressure::before,
+body main article .wind::before,
+body main article .clouds::before {
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 0.2rem;
+  font-weight: bold;
+  padding: 0.3rem;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+body main article .min::before {
+  content: "min";
+}
+body main article .max::before {
+  content: "max";
+}
+body main article .temp::before {
+  content: "temperature";
+}
+body main article .feels::before {
+  content: "feels like";
+}
+body main article .humidity,
+body main article .pressure,
+body main article .wind,
+body main article .clouds {
+  text-align: right;
+}
+body main article .humidity {
+  grid-area: hum;
+}
+body main article .humidity::before {
+  content: "humidity";
+}
+body main article .pressure::before {
+  content: "pressure";
+}
+body main article .pressure {
+  grid-area: press;
+}
+body main article .wind {
+  grid-area: windS;
+}
+body main article .wind::before {
+  content: "wind speed";
+}
+body main article .winddir {
+  grid-area: windO;
+}
+body main article .clouds {
+  grid-area: cloudy;
+}
+body main article .clouds::before {
+  content: "nebulosity";
+}
+body main article .humidity::before,
+body main article .pressure::before,
+body main article .wind::before,
+body main article .clouds::before {
+  margin-right: 1rem;
+  float: left;
+}/*# sourceMappingURL=style.css.map */
