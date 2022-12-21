@@ -2,7 +2,7 @@ import { dayOfWeek, monthOfYear, cloudOrNot } from "./functions.js";
 
 export class jourMeteo{
 
-    constructor(date, temp, min, max, feels, humidity, pressure, wind, winddir, clouds){
+    constructor(date, temp, min, max, feels, humidity, pressure, wind, winddir, clouds, main){
     this.fullDate = `${dayOfWeek(date.getDay())} ${date.getDate()} ${monthOfYear(date.getMonth())} ${date.getFullYear()}`;
     this.time = ` ${ ( date.getHours() <= 10 ) ? `0${date.getHours()}` : `${date.getHours()}`}:${ ( date.getMinutes() <= 10 ) ? `0${date.getMinutes()}` : `${date.getMinutes()}`}`;
     this.temp = `${temp}°C`;
@@ -14,6 +14,7 @@ export class jourMeteo{
     this.wind = `${wind}m/s`;
     this.winddir = winddir;
     this.clouds = `${clouds}%`;
+    this.cloudy = `${cloudOrNot(main)}`;
 }
 
 }

@@ -14,7 +14,7 @@ function dayOfWeek(day){
 }
     
 function displayElement(type, content, parent, what){
-    
+
     let element = document.createElement(type);
     let elementText = document.createTextNode(content);
     element.appendChild(elementText);
@@ -23,23 +23,32 @@ function displayElement(type, content, parent, what){
 
 }
 
-function cloudOrNot(cloudy, humidity){
+function cloudOrNot(icon){
+    console.log(icon);
 
     let icone;
 
-    let weatherIcon = ["./assets/svg/cloud.svg", "./assets/svg/drizzle.svg", "./assets/svg/rain.svg", "./assets/svg/sun.svg", "./assets/svg/suncloud.svg"];
+    let weatherIcon = ["./assets/svg/cloud.svg", "./assets/svg/drizzle.svg", "./assets/svg/rain.svg", "./assets/svg/sun.svg", "./assets/svg/suncloud.svg", "./assets/svg/snow.svg"];
 
-    for (let icon of weatherIcon){
-       let dada = document.createElement("img");
-       dada.src = icon;
-    } 
+   switch (icon){
+    case "Rain":
+        icone = weatherIcon[2];
+        break; 
+    case "Clouds":
+        icone = weatherIcon[0];
+        break;
+    
+    case "Snow":
+        icone = weatherIcon[5];
+        break;
 
-    if (cloudy > 50 && humidity < 100){
+    case "Sunny": 
         icone = weatherIcon[3];
-        console.log(icone);
-    }
+        break;
+   }
 
     return  icone;
-} 
+   
+}
 
 export { toCelsius, monthOfYear, dayOfWeek, displayElement, cloudOrNot };

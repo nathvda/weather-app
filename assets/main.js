@@ -1,8 +1,10 @@
+require('dotenv').config();
+
 import { toCelsius, displayElement } from "../modules/functions.js";
 import { jourMeteo } from "../modules/jourMeteo.js";
 
 // async function weatherMe(city){
-//     let meteo = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=77cf7509f6657d267e637e6c2a540ddf`);
+//     let meteo = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=${process.env.TOKEN}`);
 //     let meteofetched = await meteo.json();
 //     displayMeteo(meteofetched);
 
@@ -18,24 +20,31 @@ let newMeteo = localStorage.getItem("meteo");
 
 window.addEventListener('load', () => {
 
+setUpButtons();
 //  weatherMe(newMeteo);
  displayMeteo(plopInfos);
-
+ console.log(plopInfos);
     }
  )
 
 let header = document.querySelector("header");
 let main = document.querySelector("main");
 
-
-
 function setUpButtons(){
+displayElement("label", "Enter a city name", header , "townToCheckLabel");
 displayElement("input", "", header , "townToCheck");
 displayElement("button", "Get weather forecasts", header, "forecast__Button"); 
 
+
 let forecast = document.querySelector(".forecast__Button");
 forecast.setAttribute("aria-label", "get new weather forecast");
+
 let forecastInput = document.querySelector(".townToCheck");
+forecastInput.setAttribute("id", "townToCheck");
+
+let label = document.querySelector(".townToCheckLabel");
+label.setAttribute("for", "townToCheck");
+
 let town;
 
 forecastInput.addEventListener("keyup", (e) => {
@@ -44,7 +53,7 @@ forecastInput.addEventListener("keyup", (e) => {
      if (e.code == "Enter"){
 
         weatherMe(town);
-        
+
      }
 
 } )
@@ -71,7 +80,6 @@ displayElement("div", `${paysVille}`, header, "pays");
 
 setUpButtons();
 
-
 for (let i = 0 ; i < meteo.list.length ; i++){
   let date = new Date(meteo.list[i].dt_txt);
 
@@ -85,8 +93,9 @@ for (let i = 0 ; i < meteo.list.length ; i++){
   let windS = meteo.list[i].wind.speed;
   let windO = meteo.list[i].wind.deg;
   let clouds = meteo.list[i].clouds.all;
+  let special = meteo.list[i].weather[0].main;
 
-  let infos = new jourMeteo(date, temp, minT, maxT, feels, humi, press, windS, windO, clouds);
+  let infos = new jourMeteo(date, temp, minT, maxT, feels, humi, press, windS, windO, clouds, special);
 
   let element = document.createElement("article");
   element.setAttribute("id",`weatherLine-${i}`);
@@ -94,8 +103,24 @@ for (let i = 0 ; i < meteo.list.length ; i++){
 
   for (let key in infos){
 
-    displayElement("div", `${infos[key]}`,element, key);
+   if (key == "cloudy") {
+      displayElement("img", "", element, `images-${i}`);
+      let weatherIcon = document.querySelector(`.images-${i}`);
+      weatherIcon.classList.add("image-weather");
+      weatherIcon.src = infos.cloudy;
 
+   } else if (key =="winddir") {
+      displayElement("img", "", element, `images-wind-${i}`);
+      let weatherIcon = document.querySelector(`.images-wind-${i}`);
+      weatherIcon.classList.add("image-wind");
+      weatherIcon.src = "./assets/svg/arrow.svg";
+      weatherIcon.style.transform = `rotate(${0 + infos.winddir}deg)`;
+
+   } else {
+
+   displayElement("div", `${infos[key]}`, element, key);
+
+   }
     
 }
 
