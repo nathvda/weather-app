@@ -1,5 +1,6 @@
 import { toCelsius, displayElement } from "../modules/functions.js";
 import { jourMeteo } from "../modules/jourMeteo.js";
+import { setUpButtons } from "../modules/setupButtons.js";
 
 // async function weatherMe(city){
 //     let meteo = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=77cf7509f6657d267e637e6c2a540ddf`);
@@ -11,8 +12,9 @@ import { jourMeteo } from "../modules/jourMeteo.js";
 
 // }
 
-let plop = localStorage.getItem("meteostored");
-let plopInfos = JSON.parse(plop);
+
+let weather = localStorage.getItem("meteostored");
+let weatherNews = JSON.parse(weather);
 
 let newMeteo = localStorage.getItem("meteo");
 
@@ -20,49 +22,14 @@ window.addEventListener('load', () => {
 
 setUpButtons();
 //  weatherMe(newMeteo);
- displayMeteo(plopInfos);
- console.log(plopInfos);
+ displayMeteo(weatherNews);
     }
  )
 
 let header = document.querySelector("header");
+
+
 let main = document.querySelector("main");
-
-function setUpButtons(){
-displayElement("label", "Enter a city name", header , "townToCheckLabel");
-displayElement("input", "", header , "townToCheck");
-displayElement("button", "Get weather forecasts", header, "forecast__Button"); 
-
-
-let forecast = document.querySelector(".forecast__Button");
-forecast.setAttribute("aria-label", "get new weather forecast");
-
-let forecastInput = document.querySelector(".townToCheck");
-forecastInput.setAttribute("id", "townToCheck");
-
-let label = document.querySelector(".townToCheckLabel");
-label.setAttribute("for", "townToCheck");
-
-let town;
-
-forecastInput.addEventListener("keyup", (e) => {
-     town = e.target.value;
-
-     if (e.code == "Enter"){
-
-        weatherMe(town);
-
-     }
-
-} )
-
-
-forecast.addEventListener("click", ()=> {
-   weatherMe(town);
-   setUpButtons();
-} )
-}
-
 
 function displayMeteo(meteo){
 
@@ -82,7 +49,7 @@ for (let i = 0 ; i < meteo.list.length ; i++){
   let date = new Date(meteo.list[i].dt_txt);
 
   let temp = toCelsius(meteo.list[i].main.temp);
-  let feels =  toCelsius(meteo.list[i].main.feels_like);
+  let feels = toCelsius(meteo.list[i].main.feels_like);
   let minT = toCelsius(meteo.list[i].main.temp_min);
   let maxT = toCelsius(meteo.list[i].main.temp_max);
 
@@ -93,7 +60,19 @@ for (let i = 0 ; i < meteo.list.length ; i++){
   let clouds = meteo.list[i].clouds.all;
   let special = meteo.list[i].weather[0].main;
 
-  let infos = new jourMeteo(date, temp, minT, maxT, feels, humi, press, windS, windO, clouds, special);
+  let infos = new jourMeteo(
+   date,
+   temp,
+   minT,
+   maxT,
+   feels,
+   humi,
+   press,
+   windS,
+   windO,
+   clouds,
+   special
+   );
 
   let element = document.createElement("article");
   element.setAttribute("id",`weatherLine-${i}`);
@@ -125,3 +104,7 @@ for (let i = 0 ; i < meteo.list.length ; i++){
 }
 
 }
+
+document.getElementById("darkMode").addEventListener("click", () => {
+   document.documentElement.classList.toggle("dark-mode");
+})

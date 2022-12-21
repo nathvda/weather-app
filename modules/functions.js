@@ -4,12 +4,33 @@ function toCelsius(temp){
 }
 
 function monthOfYear(month){
-    const Months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const Months = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "July",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+    ];
     return Months[month];
 }
 
 function dayOfWeek(day){
-    const Days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    const Days = [
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+];
     return Days[day];
 }
     
@@ -24,7 +45,6 @@ function displayElement(type, content, parent, what){
 }
 
 function cloudOrNot(icon){
-    console.log(icon);
 
     let icone;
 
@@ -42,7 +62,7 @@ function cloudOrNot(icon){
         icone = weatherIcon[5];
         break;
 
-    case "Sunny": 
+    case "Clear": 
         icone = weatherIcon[3];
         break;
    }

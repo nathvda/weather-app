@@ -1,6 +1,31 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:ital,wght@1,900&display=swap");
 :root {
   --main: rgba(83, 177, 201, 0.562);
+  --clear: rgb(236, 236, 236);
+  --whites: rgba(255,255,255,1);
+}
+
+:root.dark-mode {
+  --main: rgba(22, 38, 43, 0.877);
+  --clear: rgb(19, 19, 19);
+  --whites: rgb(175, 174, 159);
+  background-color: black;
+  color: var(--whites);
+}
+:root.dark-mode #darkMode::before {
+  content: " ";
+  display: block;
+  background-color: var(--whites);
+  height: 1rem;
+  width: 1rem;
+  border-radius: 1rem;
+  margin-left: 2.4rem;
+  transition: 0.2s;
+}
+:root.dark-mode .townToCheck {
+  background-color: var(--clear);
+  color: var(--whites);
+  caret-color: var(--whites);
 }
 
 * {
@@ -11,8 +36,33 @@
 }
 
 body {
-  background-image: linear-gradient(90deg, var(--main), #efefef);
+  background-image: linear-gradient(90deg, var(--main), var(--clear));
   font-family: inter;
+}
+body #darkMode {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: 0;
+  height: 2rem;
+  width: 4rem;
+  background-color: var(--main);
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+}
+body #darkMode::before {
+  content: " ";
+  display: block;
+  background-color: var(--whites);
+  height: 1rem;
+  width: 1rem;
+  border-radius: 1rem;
+  margin-left: 0.5rem;
+  transition: 0.2s;
 }
 body header {
   height: 50vh;
@@ -27,7 +77,7 @@ body header .ville {
   letter-spacing: -0.3rem;
   font-style: italic;
   font-weight: bolder;
-  color: white;
+  color: var(--whites);
   text-shadow: var(--main) 0.2rem 0.2rem 0;
 }
 body header .ville::before {
@@ -54,12 +104,13 @@ body header .ville::after {
 }
 body header .pays {
   background-color: var(--main);
-  color: white;
+  color: var(--whites);
   padding: 0.5em;
   border-radius: 0.2rem;
   letter-spacing: 0.2em;
 }
 body header .townToCheck {
+  background-color: var(--whites);
   border: 0;
   padding: 0.5em 1em;
   font-size: 2rem;
@@ -71,7 +122,7 @@ body header .forecast__Button {
   border: 0;
   padding: 1rem;
   border-radius: 0.3rem;
-  color: white;
+  color: var(--whites);
   text-transform: uppercase;
 }
 body main {
@@ -91,11 +142,11 @@ body main article {
   grid-template-areas: "date date date hour" "temp maxi mini feels" "hum hum press press" "windS windS windO windO" "cloudy cloudy cloudy cloudy";
 }
 body main article .fullDate {
-  color: white;
+  color: var(--whites);
   text-align: left;
   grid-area: date;
   background-color: var(--main);
-  color: white;
+  color: var(--whites);
   padding: 0.5em;
   border-radius: 0.2rem;
   letter-spacing: 0.2em;
@@ -104,7 +155,7 @@ body main article .time {
   grid-area: hour;
   text-align: right;
   background-color: var(--main);
-  color: white;
+  color: var(--whites);
   padding: 0.5em;
   border-radius: 0.2rem;
   letter-spacing: 0.2em;
@@ -141,7 +192,7 @@ body main article .clouds::before {
   font-weight: bold;
   padding: 0.3rem;
   margin-bottom: 0.5rem;
-  color: white;
+  color: var(--whites);
 }
 body main article .min::before {
   content: "min";
@@ -196,7 +247,7 @@ body main article .clouds::before {
   float: left;
 }
 body main article .image-weather {
-  background-color: rgb(223, 223, 223);
+  background-color: var(--clear);
   border-radius: 13rem;
   padding: 1rem;
   position: absolute;
@@ -221,7 +272,7 @@ body main article .image-wind {
     padding: 0 4rem;
   }
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1200px) {
   body header .ville {
     font-size: 5rem;
   }
