@@ -35,6 +35,5 @@ function setUpButtons(){
        setUpButtons();
     } )
     }
-    
 
 export { setUpButtons }
