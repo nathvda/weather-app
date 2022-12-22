@@ -15,5 +15,16 @@
     "parcel": "^2.8.2",
     "path-browserify": "^1.0.1",
     "process": "^0.11.10"
-  }
+  },
+  "description": "2022-12-22 : \r - Added a graph of the temperature",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nathvda/weather-app.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/nathvda/weather-app/issues"
+  },
+  "homepage": "https://github.com/nathvda/weather-app#readme"
 }

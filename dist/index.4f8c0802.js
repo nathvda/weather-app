@@ -557,9 +557,8 @@ const dataWeek = [];
 const dayWeek = [];
 const dataFeels = [];
 window.addEventListener("load", ()=>{
-    //weatherMe(newMeteo);
-    (0, _setupButtonsJs.setUpButtons)();
-    displayMeteo(weatherNews);
+    if (weatherNews !== "null") displayMeteo(weatherNews);
+    if (weatherNews === "null") (0, _setupButtonsJs.setUpButtons)();
 });
 let header = document.querySelector("header");
 let main = document.querySelector("main");
