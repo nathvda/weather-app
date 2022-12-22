@@ -1,4 +1,5 @@
 import { displayElement } from "../modules/functions.js";
+import { weatherMe } from "../assets/main.js";
 
 let header = document.querySelector("header");
 
@@ -25,6 +26,7 @@ function setUpButtons(){
          if (e.code == "Enter"){
     
             weatherMe(town);
+            setUpButtons();
          }
     
     } )

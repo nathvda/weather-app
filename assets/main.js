@@ -2,28 +2,31 @@ import { toCelsius, displayElement } from "../modules/functions.js";
 import { jourMeteo } from "../modules/jourMeteo.js";
 import { setUpButtons } from "../modules/setupButtons.js";
 
+export async function weatherMe(city){
+    let meteo = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=77cf7509f6657d267e637e6c2a540ddf`);
+    let meteofetched = await meteo.json();
+    displayMeteo(meteofetched);
+    console.log("requête envoyée");
 
-// async function weatherMe(city){
-//     let meteo = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=77cf7509f6657d267e637e6c2a540ddf`);
-//     let meteofetched = await meteo.json();
-//     displayMeteo(meteofetched);
+    localStorage.setItem("meteo", city);
+    localStorage.setItem("meteostored", JSON.stringify(meteofetched));
 
-//     localStorage.setItem("meteo", city);
-//     localStorage.setItem("meteostored", JSON.stringify(meteofetched));
-
-// }
-
+}
 
 let weather = localStorage.getItem("meteostored");
 let weatherNews = JSON.parse(weather);
 
 let newMeteo = localStorage.getItem("meteo");
 
+const dataWeek = [];
+const dayWeek = [];
+
 window.addEventListener('load', () => {
 
+//weatherMe(newMeteo);
 setUpButtons();
-//  weatherMe(newMeteo);
- displayMeteo(weatherNews);
+displayMeteo(weatherNews);
+
     }
  )
 
@@ -36,7 +39,6 @@ function displayMeteo(meteo){
 
 header.innerHTML="";
 main.innerHTML="";
-
 
 let nomVille = meteo.city.name;
 let paysVille = meteo.city.country;
@@ -75,6 +77,9 @@ for (let i = 0 ; i < meteo.list.length ; i++){
    special
    );
 
+   dataWeek.push(temp);
+   dayWeek.push(`${infos.fullDate} - ${infos.time}`);
+
   let element = document.createElement("article");
   element.setAttribute("id",`weatherLine-${i}`);
   main.appendChild(element);
@@ -91,7 +96,7 @@ for (let i = 0 ; i < meteo.list.length ; i++){
       displayElement("img", "", element, `images-wind-${i}`);
       let weatherIcon = document.querySelector(`.images-wind-${i}`);
       weatherIcon.classList.add("image-wind");
-      weatherIcon.src = "./assets/svg/arrow.svg";
+      weatherIcon.src = "../assets/svg/arrow.svg";
       weatherIcon.style.transform = `rotate(${0 + infos.winddir}deg)`;
 
    } else {
@@ -109,3 +114,6 @@ for (let i = 0 ; i < meteo.list.length ; i++){
 document.getElementById("darkMode").addEventListener("click", () => {
    document.documentElement.classList.toggle("dark-mode");
 })
+
+
+export { dataWeek, dayWeek }

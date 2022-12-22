@@ -1,27 +1,29 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:ital,wght@1,900&display=swap");
+@import "https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:ital,wght@1,900&display=swap";
 :root {
-  --main: rgba(83, 177, 201, 0.562);
-  --clear: rgb(236, 236, 236);
-  --whites: rgba(255,255,255,1);
+  --main: #53b1c98f;
+  --clear: #ececec;
+  --whites: #fff;
 }
 
 :root.dark-mode {
-  --main: rgba(22, 38, 43, 0.877);
-  --clear: rgb(19, 19, 19);
-  --whites: rgb(175, 174, 159);
-  background-color: black;
+  --main: #16262be0;
+  --clear: #131313;
+  --whites: #afae9f;
   color: var(--whites);
+  background-color: #000;
 }
-:root.dark-mode #darkMode::before {
+
+:root.dark-mode #darkMode:before {
   content: " ";
-  display: block;
   background-color: var(--whites);
   height: 1rem;
   width: 1rem;
   border-radius: 1rem;
   margin-left: 2.4rem;
-  transition: 0.2s;
+  transition: all .2s;
+  display: block;
 }
+
 :root.dark-mode .townToCheck {
   background-color: var(--clear);
   color: var(--whites);
@@ -29,243 +31,270 @@
 }
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
   list-style-type: none;
-  box-sizing: border-box;
 }
 
 body {
   background-image: linear-gradient(90deg, var(--main), var(--clear));
   font-family: inter;
 }
+
 body #darkMode {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  border: 0;
+  appearance: none;
   height: 2rem;
   width: 4rem;
   background-color: var(--main);
+  border: 0;
   border-radius: 1rem;
-  display: flex;
   align-items: center;
+  display: flex;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
 }
-body #darkMode::before {
+
+body #darkMode:before {
   content: " ";
-  display: block;
   background-color: var(--whites);
   height: 1rem;
   width: 1rem;
   border-radius: 1rem;
-  margin-left: 0.5rem;
-  transition: 0.2s;
+  margin-left: .5rem;
+  transition: all .2s;
+  display: block;
 }
+
 body header {
   height: 50vh;
-  display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  display: flex;
 }
+
 body header .ville {
-  font-size: 2rem;
   text-transform: uppercase;
-  letter-spacing: -0.3rem;
+  letter-spacing: -.3rem;
+  color: var(--whites);
+  text-shadow: var(--main) .2rem .2rem 0;
+  font-size: 2rem;
   font-style: italic;
   font-weight: bolder;
-  color: var(--whites);
-  text-shadow: var(--main) 0.2rem 0.2rem 0;
 }
-body header .ville::before {
+
+body header .ville:before {
   content: " ";
   width: 100%;
+  height: .5rem;
+  background-color: var(--main);
   border-radius: 1rem;
+  animation: 1s infinite alternate-reverse wigglewigglewiggle;
+  display: block;
   position: relative;
   left: -15%;
-  height: 0.5rem;
-  background-color: var(--main);
-  display: block;
-  animation: wigglewigglewiggle 1s infinite alternate-reverse;
 }
-body header .ville::after {
+
+body header .ville:after {
   content: " ";
   width: 100%;
+  height: .5rem;
+  background-color: var(--main);
   border-radius: 1rem;
+  animation: 1s infinite alternate-reverse wigglewigglewiggle2;
+  display: block;
   position: relative;
   left: 15%;
-  height: 0.5rem;
-  background-color: var(--main);
-  display: block;
-  animation: wigglewigglewiggle2 1s infinite alternate-reverse;
 }
+
 body header .pays {
   background-color: var(--main);
   color: var(--whites);
-  padding: 0.5em;
-  border-radius: 0.2rem;
-  letter-spacing: 0.2em;
+  letter-spacing: .2em;
+  border-radius: .2rem;
+  padding: .5em;
 }
+
 body header .townToCheck {
   background-color: var(--whites);
-  border: 0;
-  padding: 0.5em 1em;
-  font-size: 2rem;
-  border-radius: 0.3rem;
   caret-color: var(--main);
+  border: 0;
+  border-radius: .3rem;
+  padding: .5em 1em;
+  font-size: 2rem;
 }
+
 body header .forecast__Button {
   background-color: var(--main);
-  border: 0;
-  padding: 1rem;
-  border-radius: 0.3rem;
   color: var(--whites);
   text-transform: uppercase;
-}
-body main {
-  display: grid;
-  gap: 0.5rem;
-  grid-template-rows: repeat(40, 1fr);
+  border: 0;
+  border-radius: .3rem;
   padding: 1rem;
 }
+
+body main {
+  grid-template-rows: repeat(40, 1fr);
+  gap: .5rem;
+  padding: 1rem;
+  display: grid;
+}
+
 body main article {
   background-image: linear-gradient(180deg, var(--main), transparent);
-  border: 1px solid rgba(196, 196, 196, 0.3019607843);
-  position: relative;
-  border-radius: 0.3rem;
+  border: 1px solid #c4c4c44d;
+  border-radius: .3rem;
+  grid-template-areas: "date date date hour"
+                       "temp maxi mini feels"
+                       "hum hum press press"
+                       "windS windS windO windO"
+                       "cloudy cloudy cloudy cloudy";
+  gap: 1rem;
   padding: 1rem;
   display: grid;
-  gap: 1rem;
-  grid-template-areas: "date date date hour" "temp maxi mini feels" "hum hum press press" "windS windS windO windO" "cloudy cloudy cloudy cloudy";
+  position: relative;
 }
+
 body main article .fullDate {
   color: var(--whites);
   text-align: left;
-  grid-area: date;
   background-color: var(--main);
   color: var(--whites);
-  padding: 0.5em;
-  border-radius: 0.2rem;
-  letter-spacing: 0.2em;
+  letter-spacing: .2em;
+  border-radius: .2rem;
+  grid-area: date;
+  padding: .5em;
 }
+
 body main article .time {
-  grid-area: hour;
   text-align: right;
   background-color: var(--main);
   color: var(--whites);
-  padding: 0.5em;
-  border-radius: 0.2rem;
-  letter-spacing: 0.2em;
+  letter-spacing: .2em;
+  border-radius: .2rem;
+  grid-area: hour;
+  padding: .5em;
 }
+
 body main article .temp, body main article .min, body main article .max, body main article .feels {
   text-align: center;
-  display: flex;
   flex-direction: column;
-  padding: 0.5rem 0;
+  padding: .5rem 0;
+  display: flex;
 }
+
 body main article .temp {
   grid-area: temp;
 }
+
 body main article .min {
   grid-area: mini;
 }
+
 body main article .max {
   grid-area: maxi;
 }
+
 body main article .feels {
   grid-area: feels;
 }
-body main article .min::before,
-body main article .max::before,
-body main article .temp::before,
-body main article .feels::before,
-body main article .humidity::before,
-body main article .pressure::before,
-body main article .wind::before,
-body main article .clouds::before {
-  background-color: rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  border-radius: 0.2rem;
-  font-weight: bold;
-  padding: 0.3rem;
-  margin-bottom: 0.5rem;
+
+body main article .min:before, body main article .max:before, body main article .temp:before, body main article .feels:before, body main article .humidity:before, body main article .pressure:before, body main article .wind:before, body main article .clouds:before {
   color: var(--whites);
+  background-color: #0000001a;
+  border: 1px solid #0000000d;
+  border-radius: .2rem;
+  margin-bottom: .5rem;
+  padding: .3rem;
+  font-weight: bold;
 }
-body main article .min::before {
+
+body main article .min:before {
   content: "min";
 }
-body main article .max::before {
+
+body main article .max:before {
   content: "max";
 }
-body main article .temp::before {
+
+body main article .temp:before {
   content: "temperature";
 }
-body main article .feels::before {
+
+body main article .feels:before {
   content: "feels like";
 }
-body main article .humidity,
-body main article .pressure,
-body main article .wind,
-body main article .clouds {
+
+body main article .humidity, body main article .pressure, body main article .wind, body main article .clouds {
   text-align: right;
 }
+
 body main article .humidity {
   grid-area: hum;
 }
-body main article .humidity::before {
+
+body main article .humidity:before {
   content: "humidity";
 }
-body main article .pressure::before {
+
+body main article .pressure:before {
   content: "pressure";
 }
+
 body main article .pressure {
   grid-area: press;
 }
+
 body main article .wind {
   grid-area: windS;
 }
-body main article .wind::before {
+
+body main article .wind:before {
   content: "wind speed";
 }
+
 body main article .winddir {
   grid-area: windO;
 }
+
 body main article .clouds {
   grid-area: cloudy;
 }
-body main article .clouds::before {
+
+body main article .clouds:before {
   content: "nebulosity";
 }
-body main article .humidity::before,
-body main article .pressure::before,
-body main article .wind::before,
-body main article .clouds::before {
-  margin-right: 1rem;
+
+body main article .humidity:before, body main article .pressure:before, body main article .wind:before, body main article .clouds:before {
   float: left;
+  margin-right: 1rem;
 }
+
 body main article .image-weather {
   background-color: var(--clear);
+  color: var(--main);
   border-radius: 13rem;
   padding: 1rem;
-  position: absolute;
-  right: 6rem;
-  top: 0.7rem;
   display: flex;
-  color: var(--main);
+  position: absolute;
+  top: .7rem;
+  right: 6rem;
 }
+
 body main article .image-wind {
   height: 1.5rem;
 }
+
 body #corps {
-  top: 5rem;
   margin: auto;
-  right: 1rem;
-  bottom: 1rem;
   padding: 4rem;
+  top: 5rem;
+  bottom: 1rem;
+  right: 1rem;
 }
+
 body #corps canvas {
   width: 100%;
   margin: auto;
@@ -275,67 +304,62 @@ body #corps canvas {
   body header .ville {
     font-size: 5rem;
   }
+
   body main {
-    display: grid;
-    gap: 0.5rem;
-    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(10, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    gap: .5rem;
     padding: 0 4rem;
+    display: grid;
   }
 }
+
 @media screen and (min-width: 1200px) {
   body header .ville {
     font-size: 5rem;
   }
+
   body main {
-    display: grid;
-    gap: 0.5rem;
-    grid-template-columns: repeat(3, 1fr);
-    padding: 0 4rem;
     grid-template-rows: repeat(10, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: .5rem;
+    padding: 0 4rem;
+    display: grid;
   }
 }
+
 @media screen and (min-width: 1500px) {
   body header .ville {
     font-size: 5rem;
   }
+
   body main {
-    display: grid;
-    gap: 0.5rem;
-    grid-template-columns: repeat(4, 1fr);
-    padding: 0 4rem;
     grid-template-rows: repeat(10, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    gap: .5rem;
+    padding: 0 4rem;
+    display: grid;
   }
 }
-@-webkit-keyframes wigglewigglewiggle {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-1rem);
-  }
-}
+
 @keyframes wigglewigglewiggle {
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(-1rem);
   }
 }
-@-webkit-keyframes wigglewigglewiggle2 {
-  from {
-    transform: translateX(-1rem);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
+
 @keyframes wigglewigglewiggle2 {
   from {
     transform: translateX(-1rem);
   }
+
   to {
     transform: translateX(0);
   }
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=index.558629d4.css.map */
