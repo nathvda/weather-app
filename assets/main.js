@@ -26,11 +26,11 @@ const dataFeels = [];
 
 window.addEventListener("load", () => {
   
-   if ( weatherNews !== "null") {
+   if ( weatherNews !== null) {
       displayMeteo(weatherNews);
    }
 
-   if ( weatherNews === "null") {
+   if ( newMeteo === "null") {
       setUpButtons();
    }
   
