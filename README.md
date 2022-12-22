@@ -10,3 +10,5 @@ This is my repository I'm a junior developper at BeCode and if you wonder why yo
 2022-12-21 : 
 - Gets weather from any place
 - Added dark mode
+
+[celle-ci buggue moins](/dist/index.html)
