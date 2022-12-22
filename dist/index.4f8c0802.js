@@ -547,9 +547,6 @@ async function weatherMe(city) {
     let meteofetched = await meteo.json();
     displayMeteo(meteofetched);
     console.log("requ\xeate envoy\xe9e");
-    let background = await fetch(`https://api.unsplash.com/photos/}`);
-    let backgroundfetched = await background.json();
-    console.log(backgroundfetched);
     localStorage.setItem("meteo", city);
     localStorage.setItem("meteostored", JSON.stringify(meteofetched));
 }

@@ -12,9 +12,6 @@ export async function weatherMe(city) {
   displayMeteo(meteofetched);
   console.log("requête envoyée");
 
-  let background = await fetch(`https://api.unsplash.com/photos/}`);
-  let backgroundfetched = await background.json();
-  console.log(backgroundfetched);
   localStorage.setItem("meteo", city);
   localStorage.setItem("meteostored", JSON.stringify(meteofetched));
 }
