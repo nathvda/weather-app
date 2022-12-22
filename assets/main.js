@@ -28,7 +28,7 @@ window.addEventListener("load", () => {
       displayMeteo(weatherNews);
    }
 
-   if ( newMeteo === "null") {
+   if ( newMeteo === null) {
       setUpButtons();
    }
   
