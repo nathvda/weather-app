@@ -17,7 +17,6 @@
     "process": "^0.11.10"
   },
   "description": "2022-12-22 : \r - Added a graph of the temperature",
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nathvda/weather-app.git"
