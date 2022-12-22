@@ -1,6 +1,8 @@
 import { toCelsius, displayElement } from "../modules/functions.js";
 import { jourMeteo } from "../modules/jourMeteo.js";
 import { setUpButtons } from "../modules/setupButtons.js";
+require('dotenv').config();
+
 
 export async function weatherMe(city) {
    let token = "77cf7509f6657d267e637e6c2a540ddf"; 
@@ -11,6 +13,9 @@ export async function weatherMe(city) {
   displayMeteo(meteofetched);
   console.log("requête envoyée");
 
+  let background = await fetch(`https://api.unsplash.com/photos/}`);
+  let backgroundfetched = await background.json();
+  console.log(backgroundfetched);
   localStorage.setItem("meteo", city);
   localStorage.setItem("meteostored", JSON.stringify(meteofetched));
 }
