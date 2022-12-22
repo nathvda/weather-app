@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "dotenv": "^16.0.3",
+    "gh-pages": "^4.0.0",
     "os-browserify": "^0.3.0",
     "parcel": "^2.8.2",
     "path-browserify": "^1.0.1",
