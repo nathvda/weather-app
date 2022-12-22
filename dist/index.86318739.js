@@ -550,7 +550,7 @@ const labels = new (0, _autoDefault.default)(ctx, {
                 label: "Temp\xe9rature",
                 data: (0, _main.dataWeek),
                 fill: false,
-                borderColor: "rgba(0,0,0,0.5)",
+                borderColor: "#0687a88f",
                 tension: 0.1
             },
             {
