@@ -2,17 +2,15 @@ import { toCelsius, displayElement } from "../modules/functions.js";
 import { jourMeteo } from "../modules/jourMeteo.js";
 import { setUpButtons } from "../modules/setupButtons.js";
 
-export async function weatherMe(city) {
-   let token = "77cf7509f6657d267e637e6c2a540ddf"; 
-   let meteo = await fetch(
-    `http://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=${token}`
-  );
-  let meteofetched = await meteo.json();
-  displayMeteo(meteofetched);
-  console.log("requête envoyée");
+export async function weatherMe(city){
+    let meteo = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=77cf7509f6657d267e637e6c2a540ddf`);
+    let meteofetched = await meteo.json();
+    displayMeteo(meteofetched);
+    console.log("requête envoyée");
 
-  localStorage.setItem("meteo", city);
-  localStorage.setItem("meteostored", JSON.stringify(meteofetched));
+    localStorage.setItem("meteo", city);
+    localStorage.setItem("meteostored", JSON.stringify(meteofetched));
+
 }
 
 let weather = localStorage.getItem("meteostored");
@@ -38,56 +36,58 @@ window.addEventListener("load", () => {
 
 let header = document.querySelector("header");
 
+
 let main = document.querySelector("main");
 
-function displayMeteo(meteo) {
-  header.innerHTML = "";
-  main.innerHTML = "";
+function displayMeteo(meteo){
 
-  let nomVille = meteo.city.name;
-  let paysVille = meteo.city.country;
+header.innerHTML="";
+main.innerHTML="";
 
-  displayElement("div", `${nomVille}`, header, "ville");
-  displayElement("div", `${paysVille}`, header, "pays");
+let nomVille = meteo.city.name;
+let paysVille = meteo.city.country;
 
-  setUpButtons();
+displayElement("div",`${nomVille}`,header, "ville");
+displayElement("div", `${paysVille}`, header, "pays"); 
 
-  for (let i = 0; i < meteo.list.length; i++) {
-    let date = new Date(meteo.list[i].dt_txt);
+setUpButtons();
 
-    let temp = toCelsius(meteo.list[i].main.temp);
-    let feels = toCelsius(meteo.list[i].main.feels_like);
-    let minT = toCelsius(meteo.list[i].main.temp_min);
-    let maxT = toCelsius(meteo.list[i].main.temp_max);
+for (let i = 0 ; i < meteo.list.length ; i++){
+  let date = new Date(meteo.list[i].dt_txt);
 
-    let humi = meteo.list[i].main.humidity;
-    let press = meteo.list[i].main.pressure;
-    let windS = meteo.list[i].wind.speed;
-    let windO = meteo.list[i].wind.deg;
-    let clouds = meteo.list[i].clouds.all;
-    let special = meteo.list[i].weather[0].main;
+  let temp = toCelsius(meteo.list[i].main.temp);
+  let feels = toCelsius(meteo.list[i].main.feels_like);
+  let minT = toCelsius(meteo.list[i].main.temp_min);
+  let maxT = toCelsius(meteo.list[i].main.temp_max);
 
-    let infos = new jourMeteo(
-      date,
-      temp,
-      minT,
-      maxT,
-      feels,
-      humi,
-      press,
-      windS,
-      windO,
-      clouds,
-      special
-    );
+  let humi = meteo.list[i].main.humidity
+  let press = meteo.list[i].main.pressure;
+  let windS = meteo.list[i].wind.speed;
+  let windO = meteo.list[i].wind.deg;
+  let clouds = meteo.list[i].clouds.all;
+  let special = meteo.list[i].weather[0].main;
 
-    dataWeek.push(temp);
-    dataFeels.push(feels);
-    dayWeek.push(`${infos.fullDate} - ${infos.time}`);
+  let infos = new jourMeteo(
+   date,
+   temp,
+   minT,
+   maxT,
+   feels,
+   humi,
+   press,
+   windS,
+   windO,
+   clouds,
+   special
+   );
 
-    let element = document.createElement("article");
-    element.setAttribute("id", `weatherLine-${i}`);
-    main.appendChild(element);
+   dataWeek.push(temp);
+   dataFeels.push(feels);
+   dayWeek.push(`${infos.fullDate} - ${infos.time}`);
+
+  let element = document.createElement("article");
+  element.setAttribute("id",`weatherLine-${i}`);
+  main.appendChild(element);
 
     for (let key in infos) {
       if (key == "cloudy") {
@@ -109,7 +109,8 @@ function displayMeteo(meteo) {
 }
 
 document.getElementById("darkMode").addEventListener("click", () => {
-  document.documentElement.classList.toggle("dark-mode");
-});
+   document.documentElement.classList.toggle("dark-mode");
+})
 
-export { dataWeek, dayWeek, dataFeels };
+
+export { dataWeek, dayWeek, dataFeels }

@@ -542,8 +542,7 @@ var _functionsJs = require("../modules/functions.js");
 var _jourMeteoJs = require("../modules/jourMeteo.js");
 var _setupButtonsJs = require("../modules/setupButtons.js");
 async function weatherMe(city) {
-    let token = "77cf7509f6657d267e637e6c2a540ddf";
-    let meteo = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=${token}`);
+    let meteo = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=77cf7509f6657d267e637e6c2a540ddf`);
     let meteofetched = await meteo.json();
     displayMeteo(meteofetched);
     console.log("requ\xeate envoy\xe9e");
