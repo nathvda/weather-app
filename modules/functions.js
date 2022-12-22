@@ -48,7 +48,7 @@ function cloudOrNot(icon){
 
     let icone;
 
-    let weatherIcon = ["../assets/svg/cloud.svg", "../assets/svg/drizzle.svg", "../assets/svg/rain.svg", "../assets/svg/sun.svg", "../assets/svg/suncloud.svg", "../assets/svg/snow.svg"];
+    let weatherIcon = ["./assets/svg/cloud.svg", "./assets/svg/drizzle.svg", "./assets/svg/rain.svg", "./assets/svg/sun.svg", "./assets/svg/suncloud.svg", "./assets/svg/snow.svg"];
 
    switch (icon){
     case "Rain":

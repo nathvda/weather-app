@@ -99,7 +99,7 @@ function displayMeteo(meteo) {
         displayElement("img", "", element, `images-wind-${i}`);
         let weatherIcon = document.querySelector(`.images-wind-${i}`);
         weatherIcon.classList.add("image-wind");
-        weatherIcon.src = "../assets/svg/arrow.svg";
+        weatherIcon.src = "./assets/svg/arrow.svg";
         weatherIcon.style.transform = `rotate(${0 + infos.winddir}deg)`;
       } else {
         displayElement("div", `${infos[key]}`, element, key);

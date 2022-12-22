@@ -599,7 +599,7 @@ function displayMeteo(meteo) {
                 (0, _functionsJs.displayElement)("img", "", element, `images-wind-${i}`);
                 let weatherIcon1 = document.querySelector(`.images-wind-${i}`);
                 weatherIcon1.classList.add("image-wind");
-                weatherIcon1.src = "../assets/svg/arrow.svg";
+                weatherIcon1.src = "./assets/svg/arrow.svg";
                 weatherIcon1.style.transform = `rotate(${0 + infos.winddir}deg)`;
             } else (0, _functionsJs.displayElement)("div", `${infos[key]}`, element, key);
         }
@@ -660,12 +660,12 @@ function displayElement(type, content, parent, what) {
 function cloudOrNot(icon) {
     let icone;
     let weatherIcon = [
-        "../assets/svg/cloud.svg",
-        "../assets/svg/drizzle.svg",
-        "../assets/svg/rain.svg",
-        "../assets/svg/sun.svg",
-        "../assets/svg/suncloud.svg",
-        "../assets/svg/snow.svg"
+        "./assets/svg/cloud.svg",
+        "./assets/svg/drizzle.svg",
+        "./assets/svg/rain.svg",
+        "./assets/svg/sun.svg",
+        "./assets/svg/suncloud.svg",
+        "./assets/svg/snow.svg"
     ];
     switch(icon){
         case "Rain":
