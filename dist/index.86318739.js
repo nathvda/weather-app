@@ -541,18 +541,23 @@ let corps = document.getElementById("corps");
 (0, _functions.displayElement)("canvas", "", corps, "cadre");
 let canvas = document.querySelector(".cadre");
 const ctx = canvas.getContext("2d");
-console.log((0, _main.dayWeek));
-console.log((0, _main.dataWeek));
 const labels = new (0, _autoDefault.default)(ctx, {
     type: "line",
     data: {
         labels: (0, _main.dayWeek),
         datasets: [
             {
-                label: "Temp\xe9rature selon tranches horaires",
+                label: "Temp\xe9rature",
                 data: (0, _main.dataWeek),
-                fill: true,
+                fill: false,
                 borderColor: "rgba(0,0,0,0.5)",
+                tension: 0.1
+            },
+            {
+                label: "Temp\xe9rature ressentie",
+                data: (0, _main.dataFeels),
+                fill: false,
+                borderColor: "#54b5ce8f",
                 tension: 0.1
             }
         ]

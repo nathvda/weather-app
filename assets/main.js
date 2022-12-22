@@ -20,6 +20,7 @@ let newMeteo = localStorage.getItem("meteo");
 
 const dataWeek = [];
 const dayWeek = [];
+const dataFeels = [];
 
 window.addEventListener('load', () => {
 
@@ -78,6 +79,7 @@ for (let i = 0 ; i < meteo.list.length ; i++){
    );
 
    dataWeek.push(temp);
+   dataFeels.push(feels);
    dayWeek.push(`${infos.fullDate} - ${infos.time}`);
 
   let element = document.createElement("article");
@@ -116,4 +118,4 @@ document.getElementById("darkMode").addEventListener("click", () => {
 })
 
 
-export { dataWeek, dayWeek }
+export { dataWeek, dayWeek, dataFeels }

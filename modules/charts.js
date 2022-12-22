@@ -1,6 +1,6 @@
 import Chart from 'chart.js/auto';
 import { displayElement } from './functions';
-import { dataWeek, dayWeek } from '../assets/main';
+import { dataWeek, dayWeek, dataFeels } from '../assets/main';
 
 let corps = document.getElementById("corps");
 
@@ -9,19 +9,23 @@ displayElement("canvas", "", corps, "cadre");
 let canvas = document.querySelector('.cadre')
 const ctx = canvas.getContext("2d");
 
-console.log(dayWeek);
-console.log(dataWeek);
-
 const labels = new Chart( ctx, {
    type: 'line',
    data : {
       labels : dayWeek,
       datasets: [{
-         label : 'Température selon tranches horaires',
+         label : 'Température',
          data : dataWeek,
-         fill : true,
+         fill : false,
          borderColor: 'rgba(0,0,0,0.5)',
          tension: 0.1
-            }]
+            },
+            {
+               label : 'Température ressentie',
+               data : dataFeels,
+               fill : false,
+               borderColor: '#54b5ce8f',
+               tension: 0.1
+                  }]
    }
 });

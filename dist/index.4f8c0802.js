@@ -537,6 +537,7 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "weatherMe", ()=>weatherMe);
 parcelHelpers.export(exports, "dataWeek", ()=>dataWeek);
 parcelHelpers.export(exports, "dayWeek", ()=>dayWeek);
+parcelHelpers.export(exports, "dataFeels", ()=>dataFeels);
 var _functionsJs = require("../modules/functions.js");
 var _jourMeteoJs = require("../modules/jourMeteo.js");
 var _setupButtonsJs = require("../modules/setupButtons.js");
@@ -553,6 +554,7 @@ let weatherNews = JSON.parse(weather);
 let newMeteo = localStorage.getItem("meteo");
 const dataWeek = [];
 const dayWeek = [];
+const dataFeels = [];
 window.addEventListener("load", ()=>{
     //weatherMe(newMeteo);
     (0, _setupButtonsJs.setUpButtons)();
@@ -582,6 +584,7 @@ function displayMeteo(meteo) {
         let special = meteo.list[i].weather[0].main;
         let infos = new (0, _jourMeteoJs.jourMeteo)(date, temp, minT, maxT, feels, humi, press, windS, windO, clouds, special);
         dataWeek.push(temp);
+        dataFeels.push(feels);
         dayWeek.push(`${infos.fullDate} - ${infos.time}`);
         let element = document.createElement("article");
         element.setAttribute("id", `weatherLine-${i}`);
