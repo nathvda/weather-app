@@ -1,7 +1,6 @@
 import { toCelsius, displayElement } from "../modules/functions.js";
 import { jourMeteo } from "../modules/jourMeteo.js";
 import { setUpButtons } from "../modules/setupButtons.js";
-require('dotenv').config();
 
 
 export async function weatherMe(city) {
