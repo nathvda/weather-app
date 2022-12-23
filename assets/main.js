@@ -26,19 +26,17 @@ const dataFeels = [];
 
 window.addEventListener("load", () => {
   
-   if ( weatherNews !== null) {
+   if ( newMeteo !== null) {
       displayMeteo(weatherNews);
    }
 
-   if ( newMeteo === "null") {
+   if ( newMeteo === null) {
       setUpButtons();
    }
   
 });
 
 let header = document.querySelector("header");
-
-
 let main = document.querySelector("main");
 
 function displayMeteo(meteo){
