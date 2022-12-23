@@ -116,5 +116,43 @@ document.getElementById("darkMode").addEventListener("click", () => {
    document.documentElement.classList.toggle("dark-mode");
 })
 
+let canvas = document.getElementById('cadre');
+const ctx = canvas.getContext("2d");
+
+const labels = new Chart( ctx, {
+   type: 'line',
+   data : {
+      labels : dayWeek,
+      datasets: [{
+         label : 'Température',
+         data : dataWeek,
+         fill : false,
+         borderColor: 'rgba(0,0,0,0.5)',
+         tension: 0.1
+            },
+            {
+               label : 'Température ressentie',
+               data : dataFeels,
+               fill : false,
+               borderColor: '#54b5ce8f',
+               tension: 0.1
+                  }, 
+                  {
+               label : 'Température minimales',
+               data : dataMin,
+               fill : false,
+               borderColor: 'rgba(98, 83, 201, 0.56)',
+               tension: 0.1
+                  }, 
+                  {
+               label : 'Température minimales',
+               data : dataMax,
+               fill : false,
+               borderColor: 'rgba(217, 113, 38, 0.56)',
+               tension: 0.1
+                  }]
+   }
+});
+
 
 export { dataWeek, dayWeek, dataFeels, dataMax, dataMin }
