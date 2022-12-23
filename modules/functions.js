@@ -26,13 +26,13 @@ function monthOfYear(month){
 // convertir jour en texte
 function dayOfWeek(day){
     const Days = [
+    "Sun",
     "Mon",
     "Tue",
     "Wed",
     "Thu",
     "Fri",
-    "Sat",
-    "Sun"
+    "Sat"
 ];
     return Days[day];
 }

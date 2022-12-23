@@ -6,12 +6,14 @@ export async function weatherMe(city) {
   let meteo = await fetch(
     `https://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=77cf7509f6657d267e637e6c2a540ddf`
   );
+
   let meteofetched = await meteo.json();
   displayMeteo(meteofetched);
   console.log("requête envoyée");
 
   localStorage.setItem("meteo", city);
   localStorage.setItem("meteostored", JSON.stringify(meteofetched));
+  
 }
 
 let weather = localStorage.getItem("meteostored");
