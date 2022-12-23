@@ -20,6 +20,8 @@ let newMeteo = localStorage.getItem("meteo");
 
 const dataWeek = [];
 const dayWeek = [];
+const dataMin = [];
+const dataMax = [];
 const dataFeels = [];
 
 window.addEventListener("load", () => {
@@ -83,6 +85,8 @@ for (let i = 0 ; i < meteo.list.length ; i++){
 
    dataWeek.push(temp);
    dataFeels.push(feels);
+   dataMin.push(minT);
+   dataMax.push(maxT);
    dayWeek.push(`${infos.fullDate} - ${infos.time}`);
 
   let element = document.createElement("article");
@@ -113,4 +117,4 @@ document.getElementById("darkMode").addEventListener("click", () => {
 })
 
 
-export { dataWeek, dayWeek, dataFeels }
+export { dataWeek, dayWeek, dataFeels, dataMax, dataMin }

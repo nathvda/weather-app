@@ -15,8 +15,50 @@
 
     <header></header>
     <main></main>
-    <footer><button id="darkMode"></button></footer>  
+    <footer><button id="darkMode"></button>
+    <div id="corps"><canvas id="cadre"></canvas></footer>  
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>   
+<script type="module">
+import { dataWeek, dataFeels, dayWeek, dataMax, dataMin } from "./assets/main.js"
+
+let canvas = document.getElementById('cadre');
+const ctx = canvas.getContext("2d");
+
+const labels = new Chart( ctx, {
+   type: 'line',
+   data : {
+      labels : dayWeek,
+      datasets: [{
+         label : 'Température',
+         data : dataWeek,
+         fill : false,
+         borderColor: 'rgba(0,0,0,0.5)',
+         tension: 0.1
+            },
+            {
+               label : 'Température ressentie',
+               data : dataFeels,
+               fill : false,
+               borderColor: '#54b5ce8f',
+               tension: 0.1
+                  }, 
+                  {
+               label : 'Température minimales',
+               data : dataMin,
+               fill : false,
+               borderColor: 'rgba(98, 83, 201, 0.56)',
+               tension: 0.1
+                  }, 
+                  {
+               label : 'Température minimales',
+               data : dataMax,
+               fill : false,
+               borderColor: 'rgba(217, 113, 38, 0.56)',
+               tension: 0.1
+                  }]
+   }
+});
+</script>
 </body>
 
 </html>
