@@ -126,6 +126,8 @@ header{
         padding:0.5em 1em;
         font-size:2rem;
         border-radius:0.3rem;
+        min-width:200px;
+        max-width:80vw;
         caret-color:var(--main);
     }
 
@@ -302,7 +304,26 @@ main{
     }
 }
 
+footer{ 
+    h2{
+        margin:auto;
+        width:80vw;
+        font-size: 2rem;
+        padding:1rem 0;
+        text-align:center;
+        text-transform:uppercase;
+        letter-spacing: 0rem;
+        font-style:italic;
+        font-weight:bolder;
+        color:var(--whites);
+        text-shadow: var(--main) 0.2rem 0.2rem 0;
+   
+    }
 }
+
+}
+
+
 
 
 @media screen and (min-width:800px){

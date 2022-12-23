@@ -49,7 +49,7 @@ main.innerHTML="";
 let nomVille = meteo.city.name;
 let paysVille = meteo.city.country;
 
-displayElement("div",`${nomVille}`,header, "ville");
+displayElement("h1",`${nomVille}`,header, "ville");
 displayElement("div", `${paysVille}`, header, "pays"); 
 
 setUpButtons();
