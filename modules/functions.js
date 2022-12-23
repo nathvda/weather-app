@@ -1,8 +1,10 @@
+// convertir en degrés
 function toCelsius(temp){
     let celsius = Math.floor(temp - 273.15);
     return celsius;
 }
 
+// convertir mois en texte
 function monthOfYear(month){
     const Months = [
         "Jan",
@@ -21,6 +23,7 @@ function monthOfYear(month){
     return Months[month];
 }
 
+// convertir jour en texte
 function dayOfWeek(day){
     const Days = [
     "Mon",
@@ -33,7 +36,8 @@ function dayOfWeek(day){
 ];
     return Days[day];
 }
-    
+
+//creation d'element
 function displayElement(type, content, parent, what){
 
     let element = document.createElement(type);
