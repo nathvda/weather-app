@@ -33,6 +33,7 @@ window.addEventListener("load", () => {
    if ( newMeteo === "null") {
       setUpButtons();
    }
+
   
 });
 
@@ -54,20 +55,20 @@ displayElement("div", `${paysVille}`, header, "pays");
 
 setUpButtons();
 
-for (let i = 0 ; i < 6 ; i++){
+for (let i = 0 ; i < 5 ; i++){
   displayElement("article", "", main, `day-${i}`);
   document.querySelector(`.day-${i}`).setAttribute("id",`day-${i}`);
   }  
 
 let j = 0;
-for (let i = 0 ; i < meteo.list.length ; i++){
 
+for (let i = 0 ; i < meteo.list.length ; i++){
+  let averageDay = [];
 let hoursofDay = new Date(`${meteo.list[i].dt_txt}`).getHours();
-console.log(hoursofDay);
 
 hoursofDay <= 0
-  if ( (meteo.list[i].dt) > (meteo.list[0].dt + (86400 * j))){
-
+  if ( (meteo.list[i].dt) > (meteo.list[0].dt + (86400 * j)) && hoursofDay >= 21){
+  averageDay = [];
   let date = new Date(meteo.list[i].dt_txt);
   
   let temp = toCelsius(meteo.list[i].main.temp);
@@ -102,6 +103,8 @@ hoursofDay <= 0
    dataMin.push(minT);
    dataMax.push(maxT);
    dayWeek.push(`${infos.fullDate} - ${infos.time}`);
+
+   averageDay.push(temp);
 
    let day = document.getElementById(`day-${j}`);
    displayElement("section", "", day, `weatherline-${i}`);
@@ -152,6 +155,13 @@ j++;
      special
      );
 
+     dataWeek.push(temp);
+     dataFeels.push(feels);
+     dataMin.push(minT);
+     dataMax.push(maxT);
+     dayWeek.push(`${infos.fullDate} - ${infos.time}`);
+
+     averageDay.push(temp);
 
      let day = document.getElementById(`day-${j}`);
      displayElement("section", "", day, `weatherline-${i}`);
@@ -172,7 +182,9 @@ j++;
         } else {
           displayElement("div", `${infos[key]}`,weath, key);
         }
-      }}
+      }
+    }
+
   }
 }
 

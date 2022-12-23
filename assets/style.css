@@ -139,11 +139,18 @@ body main article {
   position: relative;
   border-radius: 0.3rem;
   padding: 1rem;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
+  overflow: hidden;
   grid-template-areas: "date date date hour" "temp maxi mini feels" "hum hum press press" "windS windS windO windO" "cloudy cloudy cloudy cloudy";
 }
-body main article .fullDate {
+body main article section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+body main article section .fullDate {
   color: var(--whites);
   text-align: left;
   grid-area: date;
@@ -152,8 +159,9 @@ body main article .fullDate {
   padding: 0.5em;
   border-radius: 0.2rem;
   letter-spacing: 0.2em;
+  display: none;
 }
-body main article .time {
+body main article section .time {
   grid-area: hour;
   text-align: right;
   background-color: var(--main);
@@ -162,32 +170,32 @@ body main article .time {
   border-radius: 0.2rem;
   letter-spacing: 0.2em;
 }
-body main article .temp, body main article .min, body main article .max, body main article .feels {
+body main article section .temp, body main article section .min, body main article section .max, body main article section .feels {
   text-align: center;
   display: flex;
   flex-direction: column;
   padding: 0.5rem 0;
 }
-body main article .temp {
+body main article section .temp {
   grid-area: temp;
 }
-body main article .min {
+body main article section .min {
   grid-area: mini;
 }
-body main article .max {
+body main article section .max {
   grid-area: maxi;
 }
-body main article .feels {
+body main article section .feels {
   grid-area: feels;
 }
-body main article .min::before,
-body main article .max::before,
-body main article .temp::before,
-body main article .feels::before,
-body main article .humidity::before,
-body main article .pressure::before,
-body main article .wind::before,
-body main article .clouds::before {
+body main article section .min::before,
+body main article section .max::before,
+body main article section .temp::before,
+body main article section .feels::before,
+body main article section .humidity::before,
+body main article section .pressure::before,
+body main article section .wind::before,
+body main article section .clouds::before {
   background-color: rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: 0.2rem;
@@ -196,59 +204,59 @@ body main article .clouds::before {
   margin-bottom: 0.5rem;
   color: var(--whites);
 }
-body main article .min::before {
+body main article section .min::before {
   content: "min";
 }
-body main article .max::before {
+body main article section .max::before {
   content: "max";
 }
-body main article .temp::before {
+body main article section .temp::before {
   content: "temperature";
 }
-body main article .feels::before {
+body main article section .feels::before {
   content: "feels like";
 }
-body main article .humidity,
-body main article .pressure,
-body main article .wind,
-body main article .clouds {
+body main article section .humidity,
+body main article section .pressure,
+body main article section .wind,
+body main article section .clouds {
   text-align: right;
 }
-body main article .humidity {
+body main article section .humidity {
   grid-area: hum;
 }
-body main article .humidity::before {
+body main article section .humidity::before {
   content: "humidity";
 }
-body main article .pressure::before {
+body main article section .pressure::before {
   content: "pressure";
 }
-body main article .pressure {
+body main article section .pressure {
   grid-area: press;
 }
-body main article .wind {
+body main article section .wind {
   grid-area: windS;
 }
-body main article .wind::before {
+body main article section .wind::before {
   content: "wind speed";
 }
-body main article .winddir {
+body main article section .winddir {
   grid-area: windO;
 }
-body main article .clouds {
+body main article section .clouds {
   grid-area: cloudy;
 }
-body main article .clouds::before {
+body main article section .clouds::before {
   content: "nebulosity";
 }
-body main article .humidity::before,
-body main article .pressure::before,
-body main article .wind::before,
-body main article .clouds::before {
+body main article section .humidity::before,
+body main article section .pressure::before,
+body main article section .wind::before,
+body main article section .clouds::before {
   margin-right: 1rem;
   float: left;
 }
-body main article .image-weather {
+body main article section .image-weather {
   background-color: var(--clear);
   border-radius: 13rem;
   padding: 1rem;
@@ -258,8 +266,19 @@ body main article .image-weather {
   display: flex;
   color: var(--main);
 }
-body main article .image-wind {
+body main article section .image-wind {
   height: 1.5rem;
+}
+body main article section:nth-of-type(1) .fullDate {
+  color: var(--whites);
+  text-align: left;
+  grid-area: date;
+  background-color: var(--main);
+  color: var(--whites);
+  padding: 0.5em;
+  border-radius: 0.2rem;
+  letter-spacing: 0.2em;
+  display: block;
 }
 body footer h2 {
   margin: auto;
@@ -294,7 +313,7 @@ body footer h2 {
   body main {
     display: grid;
     gap: 0.5rem;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, 1fr);
     padding: 0 4rem;
     grid-template-rows: repeat(auto-fill, 1fr);
   }
