@@ -96,13 +96,15 @@ for (let i = 0 ; i < meteo.list.length ; i++){
         displayElement("img", "", element, `images-${i}`);
         let weatherIcon = document.querySelector(`.images-${i}`);
         weatherIcon.classList.add("image-weather");
+        weatherIcon.setAttribute('alt', `${key} ${infos[key]}`);
         weatherIcon.src = infos.cloudy;
       } else if (key == "winddir") {
         displayElement("img", "", element, `images-wind-${i}`);
-        let weatherIcon = document.querySelector(`.images-wind-${i}`);
-        weatherIcon.classList.add("image-wind");
-        weatherIcon.src = "./assets/svg/arrow.svg";
-        weatherIcon.style.transform = `rotate(${0 + infos.winddir}deg)`;
+        let windDirIcon = document.querySelector(`.images-wind-${i}`);
+        windDirIcon.classList.add("image-wind");
+        windDirIcon.src = "./assets/svg/arrow.svg";
+        windDirIcon.setAttribute('alt', `${key} ${infos[key]}`);
+        windDirIcon.style.transform = `rotate(${0 + infos.winddir}deg)`;
       } else {
         displayElement("div", `${infos[key]}`, element, key);
       }
