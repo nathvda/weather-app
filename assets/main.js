@@ -54,7 +54,11 @@ displayElement("div", `${paysVille}`, header, "pays");
 
 setUpButtons();
 
+let j = 0;
 for (let i = 0 ; i < meteo.list.length ; i++){
+
+  if ((meteo.list[i].dt) === meteo.list[0].dt + (86400 * j)){
+
   let date = new Date(meteo.list[i].dt_txt);
 
   let temp = toCelsius(meteo.list[i].main.temp);
@@ -83,32 +87,34 @@ for (let i = 0 ; i < meteo.list.length ; i++){
    special
    );
 
+   displayElement("article", `${infos.fullDate}`, main, `day-${j}`);
+
    dataWeek.push(temp);
    dataFeels.push(feels);
    dataMin.push(minT);
    dataMax.push(maxT);
    dayWeek.push(`${infos.fullDate} - ${infos.time}`);
 
-  let element = document.createElement("article");
-  element.setAttribute("id",`weatherLine-${i}`);
-  main.appendChild(element);
+  let daySent = document.querySelector(`.day-${j}`);
 
     for (let key in infos) {
       if (key == "cloudy") {
-        displayElement("img", "", element, `images-${i}`);
+        displayElement("img", "", daySent, `images-${i}`);
         let weatherIcon = document.querySelector(`.images-${i}`);
         weatherIcon.classList.add("image-weather");
         weatherIcon.src = infos.cloudy;
       } else if (key == "winddir") {
-        displayElement("img", "", element, `images-wind-${i}`);
+        displayElement("img", "", daySent, `images-wind-${i}`);
         let weatherIcon = document.querySelector(`.images-wind-${i}`);
         weatherIcon.classList.add("image-wind");
         weatherIcon.src = "./assets/svg/arrow.svg";
         weatherIcon.style.transform = `rotate(${0 + infos.winddir}deg)`;
       } else {
-        displayElement("div", `${infos[key]}`, element, key);
+        displayElement("div", `${infos[key]}`, daySent, key);
       }
     }
+j++;
+  }
   }
 }
 
