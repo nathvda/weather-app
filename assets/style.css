@@ -130,7 +130,7 @@ body header .forecast__Button {
 body main {
   display: grid;
   gap: 0.5rem;
-  grid-template-rows: repeat(40, 1fr);
+  grid-template-rows: repeat(auto-fill, 1fr);
   padding: 1rem;
 }
 body main article {
@@ -283,7 +283,7 @@ body footer h2 {
     display: grid;
     gap: 0.5rem;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(10, 1fr);
+    grid-template-rows: repeat(auto-fill 1fr);
     padding: 0 4rem;
   }
 }
@@ -296,7 +296,7 @@ body footer h2 {
     gap: 0.5rem;
     grid-template-columns: repeat(3, 1fr);
     padding: 0 4rem;
-    grid-template-rows: repeat(10, 1fr);
+    grid-template-rows: repeat(auto-fill, 1fr);
   }
 }
 @media screen and (min-width: 1500px) {
@@ -308,7 +308,7 @@ body footer h2 {
     gap: 0.5rem;
     grid-template-columns: repeat(4, 1fr);
     padding: 0 4rem;
-    grid-template-rows: repeat(10, 1fr);
+    grid-template-rows: repeat(auto-fill, 1fr);
   }
 }
 @-webkit-keyframes wigglewigglewiggle {

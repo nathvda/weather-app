@@ -144,7 +144,7 @@ header{
 main{
     display:grid;
     gap:0.5rem;
-    grid-template-rows: repeat(40,1fr);
+    grid-template-rows: repeat(auto-fill,1fr);
     padding:1rem;
 
     article{
@@ -340,7 +340,7 @@ footer{
             display:grid;
             gap:0.5rem;
             grid-template-columns: repeat(2,1fr);
-            grid-template-rows: repeat(10, 1fr);
+            grid-template-rows: repeat(auto-fill 1fr);
             padding: 0 4rem;
     }
 }
@@ -360,7 +360,7 @@ footer{
             gap:0.5rem;
             grid-template-columns: repeat(3,1fr);
             padding: 0 4rem;
-            grid-template-rows: repeat(10, 1fr);
+            grid-template-rows: repeat(auto-fill, 1fr);
 
     }
 }
@@ -381,7 +381,7 @@ footer{
             gap:0.5rem;
             grid-template-columns: repeat(4,1fr);
             padding: 0 4rem;
-            grid-template-rows: repeat(10, 1fr);
+            grid-template-rows: repeat(auto-fill, 1fr);
 
     }
 }
