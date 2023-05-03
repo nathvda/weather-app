@@ -1,10 +1,11 @@
 import { toCelsius, displayElement } from "../modules/functions.js";
 import { jourMeteo } from "../modules/jourMeteo.js";
 import { setUpButtons } from "../modules/setupButtons.js";
+require('dotenv');
 
 export async function weatherMe(city) {
   let meteo = await fetch(
-    `https://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=77cf7509f6657d267e637e6c2a540ddf`
+    `https://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=${APPKEY}`
   );
 
   let meteofetched = await meteo.json();
